@@ -99,7 +99,7 @@ vector < vector <int> > Labyrinth::create_labyrinth(int w, int h){
 
 int* Labyrinth::read_labyrinth(vector < vector <int> > a_double){
     vector<int> result;
-    int *res = new int(a_double[0].size() * a_double.size()+ 2);
+    int *res = new int[a_double[0].size() * a_double.size()+ 2];
     res[0] = a_double[0].size();
     res[1] = a_double.size();
 
