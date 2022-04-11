@@ -2,9 +2,10 @@
 #include <cmath>
 #include <windows.h>
 #include <string>
+#include "mazegenerator.cpp"
 
 using namespace std;
-#define PI 3.141592
+#define PI 3.14159265359
 
 /*
 from:
@@ -258,31 +259,28 @@ public:
 
 
 int main() {
-							//Linux		(100, 40)
-							//Windows	(600, 170)
-	const int WIDTH = 1200;
+	const int WIDTH = 1800;
 	const int HEIGHT = 300;
-	const int fov = 70;
+	const int fov = 90;
 
-	int maze_width = 10;
-	int maze_height = 10;
-	double spawnX = 3.5;
-	double spawnY = 3.5;
+	int maze_width = 100;
+	int maze_height = 100;
+	double spawnX = 1.5;
+	double spawnY = 1.5;
 	double speed = 0.003;
 	double sensitivity = 0.11;
 	
-	char* map = (char*)
-"\
-1111111111\
-1010000001\
-1010011001\
-1010001001\
-1011111001\
-1000000001\
-1110111011\
-1010110111\
-1000000001\
-1111111111";
+	int *mapp = Labyrinth::read_labyrinth(Labyrinth::create_labyrinth(maze_width, maze_height));
+
+	char* map = new char[maze_width * maze_height];
+	for (int i = 0; i < maze_width * maze_height; i++) {
+		map[i] = (mapp[i]) ? '1' : '0';
+	}
+	map[maze_width + 1] = '0';
+	map[maze_width + 2] = '0';
+	map[2 * maze_width + 1] = '0';
+	map[2 * maze_width + 2] = '0';
+	delete[] mapp;
 
 	Screen sc(WIDTH, HEIGHT, fov, maze_width, maze_height, map, spawnX, spawnY, speed, sensitivity);
 	
