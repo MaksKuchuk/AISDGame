@@ -253,6 +253,10 @@ public:
 		delete cam_pos;
 		delete[] length;
 		delete[] s;
+		delete loc_ray;
+		delete cam_look_direction;
+		delete[] length;
+		delete[] s;
 	}
 
 };
