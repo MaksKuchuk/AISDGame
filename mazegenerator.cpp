@@ -24,10 +24,9 @@ vector < vector <int> > Labyrinth::create_labyrinth(int w, int h) {
             }
         }
     }
-    //---------------------Задаем стартовую позицую алгоритма-----------------------------------
 
-    srand(time(0)); // устанавливаем значение системных часов в качестве стартового числа для srand()
-    int r = 0 + rand() % (free_coordinates.size() - 0); // рандомное число
+    srand(time(0));
+    int r = 0 + rand() % (free_coordinates.size() - 0);
     int h1 = free_coordinates[r].first;
     int w1 = free_coordinates[r].second;
     array[h1][w1] = 5;
@@ -50,8 +49,7 @@ vector < vector <int> > Labyrinth::create_labyrinth(int w, int h) {
         array[h1][w1 - 1] += 1;
         pm.emplace_back(h1, w1 - 1);
     }
-    //--------------------------------------------------------------------------------------
-    //------------------------Основная часть алгоритма--------------------------------------
+
     while (!pm.empty())
     {
         srand(time(0));
