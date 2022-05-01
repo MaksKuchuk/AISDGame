@@ -7,6 +7,7 @@ using namespace std;
 class Labyrinth {
 public:
     Labyrinth() {}
+
     static vector < vector <int> > create_labyrinth(int w, int h){
         vector < vector <int> > array(h, vector <int>(w));
         vector< pair<int, int> > free_coordinates;
@@ -93,6 +94,25 @@ public:
         }
 
         array[1][1] = 4;
+        while(true){
+            if (array[1][2] == 1){
+                array[1][2] = 0;
+                array[1][3] = 0;
+                break;
+            }
+            if (array[2][1] == 1){
+                array[2][1] = 0;
+                array[3][1] = 0;
+                break;
+            }
+            if (array[2][2] == 1){
+                array[2][2] = 0;
+                break;
+            }
+            else
+                break;
+        }
+
         array[array.size() - 2][array[0].size() - 2] = 5;
         while(true){
             if (array[array.size() - 2][array[0].size() - 3] == 1){
@@ -116,7 +136,6 @@ public:
     }
 
     static int* read_labyrinth(vector < vector <int> > a_double){
-        vector<int> result;
         int* res = new int[a_double[0].size() * a_double.size()];
 
         int t = 0;
