@@ -561,30 +561,40 @@ int main() {
 	const int HEIGHT = 300;
 	const int fov = 70;
 
-	const int maze_width = 10;
-	const int maze_height = 10;
+	const int maze_width = 30;
+	const int maze_height = 30;
 	double spawnX = 1.5;
 	double spawnY = 1.5;
-	int winX = 8;
-	int winY = 8;
-	double speed = 0.001;
-	double sensitivity = 0.003;
+	int winX = maze_width - 2;
+	int winY = maze_height - 2;
+	double walkSpeed = 0.0015;
+	double sensitivity = 0.0035;
 
-	char map[maze_width * maze_height] = 
-	  {'1','1','1','1','1','1','1','1','1','1',
-	   '1','0','1','0','0','0','0','0','0','1',
-	   '1','0','1','0','1','1','0','1','0','1',
-	   '1','0','1','1','0','0','0','1','0','1',
-	   '1','0','1','0','0','0','0','1','0','1',
-	   '1','0','1','0','0','0','0','1','0','1',
-	   '1','0','1','0','1','0','0','1','0','1',
-	   '1','0','1','0','1','0','1','0','0','1',
-	   '1','0','0','0','1','0','1','0','0','1',
-	   '1','1','1','1','1','1','1','1','1','1' };
+	//char map[maze_width * maze_height] = 
+	//  {'1','1','1','1','1','1','1','1','1','1',
+	//   '1','0','1','0','0','0','0','0','0','1',
+	//   '1','0','1','0','1','1','0','1','0','1',
+	//   '1','0','1','1','0','0','0','1','0','1',
+	//   '1','0','1','0','0','0','0','1','0','1',
+	//   '1','0','1','0','0','0','0','1','0','1',
+	//   '1','0','1','0','1','0','0','1','0','1',
+	//   '1','0','1','0','1','0','1','0','0','1',
+	//   '1','0','0','0','1','0','1','0','0','1',
+	//   '1','1','1','1','1','1','1','1','1','1' };
 
+	Labyrinth maze;
+	
+	int* t = maze.read_labyrinth(maze.create_labyrinth(maze_width, maze_height));
+	char* map = new char[maze_width * maze_height];
+
+	for (int i = 0; i < maze_width * maze_height; i++) {
+		map[i] = t[i] + '0';
+	}
+
+	map[1 * maze_width + 1] = '0';
 	map[winY * maze_width + winX] = '5';
-
-	Screen sc(WIDTH, HEIGHT, fov, maze_width, maze_height, map, spawnX, spawnY, winX, winY, speed, sensitivity);
+	
+	Screen sc(WIDTH, HEIGHT, fov, maze_width, maze_height, map, spawnX, spawnY, winX, winY, walkSpeed, sensitivity);
 	
 	sc.run();
 
