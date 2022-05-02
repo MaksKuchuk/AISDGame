@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <ctime>
 #include <time.h>
 using namespace std;
 
@@ -106,7 +105,11 @@ public:
                 break;
             }
             if (array[2][2] == 1){
-                array[2][2] = 0;
+                array[1][3] = 0;
+                break;
+            }
+            if (array[2][2] == 1){
+                array[3][1] = 0;
                 break;
             }
             else
@@ -126,7 +129,11 @@ public:
                 break;
             }
             if (array[array.size() - 3][array[0].size() - 3] == 1){
-                array[array.size() - 3][array[0].size() - 3] = 0;
+                array[array.size() - 2][array[0].size() - 4] = 0;
+                break;
+            }
+            if (array[array.size() - 3][array[0].size() - 3] == 1){
+                array[array.size() - 4][array[0].size() - 2] = 0;
                 break;
             }
             else
@@ -137,7 +144,6 @@ public:
 
     static int* read_labyrinth(vector < vector <int> > a_double){
         int* res = new int[a_double[0].size() * a_double.size()];
-
         int t = 0;
         for (int i = 0; i < a_double.size(); i++) {
             for (int j = 0; j < a_double[0].size(); j++) {
