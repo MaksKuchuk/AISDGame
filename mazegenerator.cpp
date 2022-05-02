@@ -21,10 +21,8 @@ public:
             }
         }
 
-        srand(time(0));
-        int r = 0 + rand() % (free_coordinates.size() - 0);
-        int h1 = free_coordinates[r].first;
-        int w1 = free_coordinates[r].second;
+        int h1 = free_coordinates[1].first;
+        int w1 = free_coordinates[1].second;
         array[h1][w1] = 5;
 
         vector< pair<int, int> > pm;
