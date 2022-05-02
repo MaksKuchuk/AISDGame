@@ -97,11 +97,17 @@ public:
             if (array[1][2] == 1){
                 array[1][2] = 0;
                 array[1][3] = 0;
+                array[1][4] = 0;
                 break;
             }
             if (array[2][1] == 1){
                 array[2][1] = 0;
                 array[3][1] = 0;
+                array[4][1] = 0;
+                break;
+            }
+            if (array[4][1] == 1){
+                array[4][1] = 0;
                 break;
             }
             if (array[2][2] == 1){
@@ -118,11 +124,17 @@ public:
             if (array[array.size() - 2][array[0].size() - 3] == 1){
                 array[array.size() - 2][array[0].size() - 3] = 0;
                 array[array.size() - 2][array[0].size() - 4] = 0;
+                array[array.size() - 2][array[0].size() - 5] = 0;
                 break;
             }
             if (array[array.size() - 3][array[0].size() - 2] == 1){
                 array[array.size() - 3][array[0].size() - 2] = 0;
                 array[array.size() - 4][array[0].size() - 2] = 0;
+                array[array.size() - 5][array[0].size() - 2] = 0;
+                break;
+            }
+            if (array[array.size() - 5][array[0].size() - 2] == 1){
+                array[array.size() - 5][array[0].size() - 2] = 0;
                 break;
             }
             if (array[array.size() - 3][array[0].size() - 3] == 1){
